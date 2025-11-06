@@ -22,9 +22,15 @@ class RocketMonitorApp:
         self.start_time = None
         
         # For smooth data simulation
-        self.last_pipe_pressure = 125
-        self.last_chamber_pressure = 250
+        self.last_pipe_pressure = 0
+        self.last_chamber_pressure = 0
         self.last_thrust = 0
+        self.target_pipe_pressure = 150  # Target PSI for pipe
+        self.target_chamber_pressure = 250  # Target PSI for chamber
+        
+        # Pressure build rates (PSI per update)
+        self.pipe_pressure_rate = 0.2
+        self.chamber_pressure_rate = 0.3
         
         # For min/max tracking
         self.pipe_pressure_min = float('inf')
@@ -33,6 +39,11 @@ class RocketMonitorApp:
         self.chamber_pressure_max = float('-inf')
         self.thrust_min = float('inf')
         self.thrust_max = float('-inf')
+        
+        # Thrust curve parameters
+        self.thrust_phase = 'build'  # build, peak, decay, sustain, shutdown
+        self.thrust_peak = 12  # Peak thrust in Newtons
+        self.thrust_sustain = 4.5  # Sustain thrust in Newtons
         
         # Initialize with some data
         current_time = time.time()
@@ -223,29 +234,32 @@ class RocketMonitorApp:
             ax.grid(True, which='major', linestyle='-', alpha=0.7)
             ax.grid(True, which='minor', linestyle=':', alpha=0.4)
         
-        # Update pipe pressure plot
+        # Update pipe pressure plot and stats
         self.pipe_line.set_xdata(self.times)
         self.pipe_line.set_ydata(self.pipe_pressure_data)
+        self.pipe_stats.set_text(f'Min: {self.pipe_pressure_min:.1f} PSI\nMax: {self.pipe_pressure_max:.1f} PSI\nCurrent: {self.last_pipe_pressure:.1f} PSI')
         setup_time_axis(self.pipe_ax)
         self.pipe_fig.tight_layout()
         self.pipe_canvas.draw()
         
-        # Update chamber pressure plot
+        # Update chamber pressure plot and stats
         self.chamber_line.set_xdata(self.times)
         self.chamber_line.set_ydata(self.chamber_pressure_data)
+        self.chamber_stats.set_text(f'Min: {self.chamber_pressure_min:.1f} PSI\nMax: {self.chamber_pressure_max:.1f} PSI\nCurrent: {self.last_chamber_pressure:.1f} PSI')
         setup_time_axis(self.chamber_ax)
         self.chamber_fig.tight_layout()
         self.chamber_canvas.draw()
         
-        # Update thrust plot
+        # Update thrust plot and stats
         self.thrust_line.set_xdata(self.times)
         self.thrust_line.set_ydata(self.thrust_data)
+        self.thrust_stats.set_text(f'Min: {self.thrust_min:.1f} N\nMax: {self.thrust_max:.1f} N\nCurrent: {self.last_thrust:.1f} N')
         setup_time_axis(self.thrust_ax)
         self.thrust_fig.tight_layout()
         self.thrust_canvas.draw()
         
         # Schedule the next update
-        self.root.after(20, self.update_plots)  # Update every 20ms (50Hz)
+        self.root.after(100, self.update_plots)  # Update every 100ms (10Hz)
 
 if __name__ == "__main__":
     root = tk.Tk()
