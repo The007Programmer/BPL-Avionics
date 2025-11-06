@@ -23,14 +23,14 @@ class RocketMonitorApp:
         
         # For smooth data simulation
         self.last_pipe_pressure = 0
-        self.last_chamber_pressure = 0
+        self.last_combustion_pressure = 0
         self.last_thrust = 0
         self.target_pipe_pressure = 150  # Target PSI for pipe
-        self.target_chamber_pressure = 250  # Target PSI for chamber
+        self.target_combustion_pressure = 250  # Target PSI for combustion chamber
         
         # Pressure build rates (PSI per update)
-        self.pipe_pressure_rate = 0.2
-        self.chamber_pressure_rate = 0.3
+        self.pipe_pressure_rate = 0.05  # Slower pressure build
+        self.combustion_pressure_rate = 0.05  # Slower pressure build
         
         # For min/max tracking
         self.pipe_pressure_min = float('inf')
@@ -118,20 +118,20 @@ class RocketMonitorApp:
         self.pipe_canvas.draw()
         self.pipe_canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
-        # Create chamber pressure graph
-        self.chamber_fig = Figure(figsize=(5, 3), dpi=100)
-        self.chamber_ax = self.chamber_fig.add_subplot(111)
-        self.chamber_ax.set_title('Chamber Pressure')
-        self.chamber_ax.set_ylabel('Pressure (PSI)')
-        self.chamber_ax.set_xlabel('Time (s)')
-        self.chamber_line, = self.chamber_ax.plot([], [], 'r-', label='Chamber Pressure', linewidth=1.5)
-        self.chamber_ax.grid(True, which='both', linestyle='--', alpha=0.6)
+        # Create combustion chamber pressure graph
+        self.combustion_fig = Figure(figsize=(5, 3), dpi=100)
+        self.combustion_ax = self.combustion_fig.add_subplot(111)
+        self.combustion_ax.set_title('Combustion Chamber Pressure')
+        self.combustion_ax.set_ylabel('Pressure (PSI)')
+        self.combustion_ax.set_xlabel('Time (s)')
+        self.combustion_line, = self.combustion_ax.plot([], [], 'r-', label='Combustion Chamber', linewidth=1.5)
+        self.combustion_ax.grid(True, which='both', linestyle='--', alpha=0.6)
         
-        # Add min/max text for chamber pressure
-        self.chamber_stats = self.chamber_ax.text(0.02, 0.98, '', transform=self.chamber_ax.transAxes,
-                                                verticalalignment='top', fontsize=8)
-        self.chamber_ax.legend(loc='upper right')
-        self.chamber_ax.set_ylim(190, 310)  # Fixed y-axis range for pressure
+        # Add min/max text for combustion chamber pressure
+        self.combustion_stats = self.combustion_ax.text(0.02, 0.98, '', transform=self.combustion_ax.transAxes,
+                                                      verticalalignment='top', fontsize=8)
+        self.combustion_ax.legend(loc='upper right')
+        self.combustion_ax.set_ylim(190, 310)  # Fixed y-axis range for pressure
         
         # Add chamber pressure plot to the window
         self.chamber_canvas = FigureCanvasTkAgg(self.chamber_fig, master=right_graph_frame)
