@@ -176,34 +176,74 @@ class RocketMonitorApp:
         # Here you would add the actual servo control code
 
     def simulate_sensor_reading(self):
-        # Simulate smoother pipe pressure changes (small delta from previous reading)
-        delta_pipe = random.uniform(-0.2, 0.2)  # Much smaller variations
-        self.last_pipe_pressure = max(90, min(160, self.last_pipe_pressure + delta_pipe))
-        
+        elapsed_time = time.time() - self.start_time if self.start_time else 0
+
+        # Simulate pipe pressure (affected by ball valve)
+        if not self.ball_valve_state:
+            # When valve is closed, pressure builds gradually
+            if self.last_pipe_pressure < self.target_pipe_pressure:
+                self.last_pipe_pressure = min(
+                    self.target_pipe_pressure,
+                    self.last_pipe_pressure + self.pipe_pressure_rate
+                )
+        else:
+            # When valve is open, pressure decreases gradually
+            self.last_pipe_pressure = max(
+                0,
+                self.last_pipe_pressure - self.pipe_pressure_rate * 2
+            )
+
         # Update pipe pressure min/max
         self.pipe_pressure_min = min(self.pipe_pressure_min, self.last_pipe_pressure)
         self.pipe_pressure_max = max(self.pipe_pressure_max, self.last_pipe_pressure)
         
-        # Simulate smoother chamber pressure changes
-        delta_chamber = random.uniform(-0.3, 0.3)  # Much smaller variations
-        self.last_chamber_pressure = max(190, min(310, self.last_chamber_pressure + delta_chamber))
+        # Simulate chamber pressure (affected by purge valve)
+        if not self.purge_valve_state:
+            # When valve is closed, pressure builds based on pipe pressure
+            target = self.last_pipe_pressure * 1.5  # Chamber pressure is higher
+            if self.last_chamber_pressure < target:
+                self.last_chamber_pressure = min(
+                    target,
+                    self.last_chamber_pressure + self.chamber_pressure_rate
+                )
+        else:
+            # When purge valve is open, pressure drops rapidly
+            self.last_chamber_pressure = max(
+                0,
+                self.last_chamber_pressure - self.chamber_pressure_rate * 3
+            )
         
         # Update chamber pressure min/max
         self.chamber_pressure_min = min(self.chamber_pressure_min, self.last_chamber_pressure)
         self.chamber_pressure_max = max(self.chamber_pressure_max, self.last_chamber_pressure)
         
-        # Simulate smoother thrust changes
-        if self.start_time is None or time.time() - self.start_time < 2.0:
-            # Thrust buildup phase (slower)
-            delta_thrust = random.uniform(0.5, 1.5)
-        elif time.time() - self.start_time > 8.0:
-            # Thrust reduction phase (slower)
-            delta_thrust = random.uniform(-1.5, -0.5)
-        else:
-            # Steady thrust phase (much smaller variations)
-            delta_thrust = random.uniform(-0.3, 0.3)
+        # Simulate realistic thrust curve
+        if elapsed_time < 0.2:  # Build phase (0-0.2s)
+            self.thrust_phase = 'build'
+            progress = elapsed_time / 0.2
+            self.last_thrust = self.thrust_peak * (progress ** 2)  # Quadratic increase
         
-        self.last_thrust = max(0, min(1000, self.last_thrust + delta_thrust))
+        elif elapsed_time < 0.3:  # Peak phase (0.2-0.3s)
+            self.thrust_phase = 'peak'
+            self.last_thrust = self.thrust_peak
+        
+        elif elapsed_time < 0.5:  # Decay phase (0.3-0.5s)
+            self.thrust_phase = 'decay'
+            progress = (elapsed_time - 0.3) / 0.2
+            self.last_thrust = self.thrust_peak - (self.thrust_peak - self.thrust_sustain) * progress
+        
+        elif elapsed_time < 0.8:  # Sustain phase (0.5-0.8s)
+            self.thrust_phase = 'sustain'
+            self.last_thrust = self.thrust_sustain
+        
+        else:  # Shutdown phase (after 0.8s)
+            self.thrust_phase = 'shutdown'
+            progress = min(1.0, (elapsed_time - 0.8) / 0.2)  # 0.2s shutdown
+            self.last_thrust = self.thrust_sustain * (1 - progress)
+        
+        # Add tiny variations to thrust
+        self.last_thrust += random.uniform(-0.05, 0.05)
+        self.last_thrust = max(0, self.last_thrust)
         
         # Update thrust min/max
         self.thrust_min = min(self.thrust_min, self.last_thrust)
