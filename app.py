@@ -3,18 +3,35 @@ from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-import numpy as np
 import random
 from collections import deque
 import time
 
+"""Rocket monitor demo GUI
+
+This module provides a simple Tkinter app that plots three simulated
+telemetry streams (pipe pressure, combustion chamber pressure, thrust).
+It's intentionally lightweight and easy to replace the simulator with a
+real data source later.
+"""
+
 class RocketMonitorApp:
+    """Simple demo GUI for live plotting of three streams:
+    - pipe pressure (controlled by ball valve)
+    - combustion chamber pressure (controlled by purge valve)
+    - thrust (load cell)
+
+    This is a demo harness — replace `simulate_sensor_reading` with
+    a real data reader (serial, bluetooth, etc.) when available.
+    """
+
     def __init__(self, root):
         self.root = root
         self.root.title("Rocket Monitor System")
         
         # Data storage (simulate last 1000 samples at 100ms = 100 seconds of data)
         self.max_points = 1000
+    # Use deques as fixed-size circular buffers (fast appends/pops)
         self.times = deque(maxlen=self.max_points)
         self.pipe_pressure_data = deque(maxlen=self.max_points)
         self.chamber_pressure_data = deque(maxlen=self.max_points)
@@ -60,7 +77,8 @@ class RocketMonitorApp:
         control_frame = ttk.Frame(main_frame)
         control_frame.pack(fill=tk.X, pady=(10, 0))
         
-        # Ball Valve Toggle
+        # --- Valve controls (toggle buttons) ---
+        # Ball Valve Toggle (affects pipe pressure)
         self.ball_valve_state = False
         self.ball_valve_btn = ttk.Button(
             control_frame,
@@ -71,6 +89,7 @@ class RocketMonitorApp:
         self.ball_valve_btn.pack(side=tk.LEFT, padx=10, expand=True)
         
         # Purge Valve Toggle
+        # Purge valve affects combustion chamber pressure
         self.purge_valve_state = False
         self.purge_valve_btn = ttk.Button(
             control_frame,
@@ -158,6 +177,11 @@ class RocketMonitorApp:
         self.update_plots()
 
     def toggle_ball_valve(self):
+        """Toggle the ball valve state (affects pipe pressure).
+
+        This updates the button label and would be the place to send a
+        servo command in a real system.
+        """
         self.ball_valve_state = not self.ball_valve_state
         state = "OPEN" if self.ball_valve_state else "CLOSED"
         self.ball_valve_btn.configure(text=f"Ball Valve: {state}")
@@ -165,6 +189,7 @@ class RocketMonitorApp:
         # Here you would add the actual servo control code
 
     def toggle_purge_valve(self):
+        """Toggle the purge valve (affects combustion chamber pressure)."""
         self.purge_valve_state = not self.purge_valve_state
         state = "OPEN" if self.purge_valve_state else "CLOSED"
         self.purge_valve_btn.configure(text=f"Purge Valve: {state}")
@@ -172,6 +197,12 @@ class RocketMonitorApp:
         # Here you would add the actual servo control code
 
     def simulate_sensor_reading(self):
+        """Demo data generator.
+
+        Returns a tuple (pipe_pressure_psi, combustion_pressure_psi, thrust_newtons).
+        Replace this method with a real reader (serial/bluetooth) when you have
+        the MCU stream available.
+        """
         elapsed_time = time.time() - self.start_time if self.start_time else 0
 
         # Simulate pipe pressure (affected by ball valve)
@@ -249,7 +280,12 @@ class RocketMonitorApp:
         return self.last_pipe_pressure, self.last_combustion_pressure, self.last_thrust
 
     def update_plots(self):
-        # Simulate new readings
+        """Fetch new sample, append to buffers, redraw plots.
+
+        This runs on a timer via `root.after()` so it must be fast and non-blocking.
+        """
+
+        # Simulate new readings (replace with real reader later)
         pipe_pressure, chamber_pressure, thrust = self.simulate_sensor_reading()
         
         # Update data
