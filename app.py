@@ -21,9 +21,9 @@ class RocketMonitorApp:
         self.thrust_data = deque(maxlen=self.max_points)
         self.start_time = None
         
-        # For smooth data simulation
-        self.last_pipe_pressure = 0
-        self.last_combustion_pressure = 0
+        # For smooth data simulation (start from realistic baseline values)
+        self.last_pipe_pressure = 125.0
+        self.last_combustion_pressure = 240.0
         self.last_thrust = 0
         self.target_pipe_pressure = 150  # Target PSI for pipe
         self.target_combustion_pressure = 250  # Target PSI for combustion chamber
@@ -45,13 +45,8 @@ class RocketMonitorApp:
         self.thrust_peak = 12  # Peak thrust in Newtons
         self.thrust_sustain = 4.5  # Sustain thrust in Newtons
         
-        # Initialize with some data
-        current_time = time.time()
-        for i in range(self.max_points):
-            self.times.append(current_time + i)
-            self.pipe_pressure_data.append(0)
-            self.chamber_pressure_data.append(0)
-            self.thrust_data.append(0)
+        # Start with empty buffers; first update will append baseline values
+        # (keeps x-axis elapsed-time logic simple)
         
         # Create main container
         main_frame = ttk.Frame(root)
@@ -151,7 +146,8 @@ class RocketMonitorApp:
         self.thrust_stats = self.thrust_ax.text(0.02, 0.98, '', transform=self.thrust_ax.transAxes,
                                               verticalalignment='top', fontsize=8)
         self.thrust_ax.legend(loc='upper right')
-        self.thrust_ax.set_ylim(0, 1100)  # Fixed y-axis range for thrust
+        # Scale thrust axis to expected demo peak (~12 N)
+        self.thrust_ax.set_ylim(0, 15)  # Fixed y-axis range for thrust
         
         # Add thrust plot to the window
         self.thrust_canvas = FigureCanvasTkAgg(self.thrust_fig, master=bottom_graph_frame)
