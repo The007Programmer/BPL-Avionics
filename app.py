@@ -133,10 +133,10 @@ class RocketMonitorApp:
         self.combustion_ax.legend(loc='upper right')
         self.combustion_ax.set_ylim(190, 310)  # Fixed y-axis range for pressure
         
-        # Add chamber pressure plot to the window
-        self.chamber_canvas = FigureCanvasTkAgg(self.chamber_fig, master=right_graph_frame)
-        self.chamber_canvas.draw()
-        self.chamber_canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        # Add combustion chamber pressure plot to the window
+        self.combustion_canvas = FigureCanvasTkAgg(self.combustion_fig, master=right_graph_frame)
+        self.combustion_canvas.draw()
+        self.combustion_canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         
         # Create thrust graph
         self.thrust_fig = Figure(figsize=(10, 3), dpi=100)
@@ -197,25 +197,25 @@ class RocketMonitorApp:
         self.pipe_pressure_min = min(self.pipe_pressure_min, self.last_pipe_pressure)
         self.pipe_pressure_max = max(self.pipe_pressure_max, self.last_pipe_pressure)
         
-        # Simulate chamber pressure (affected by purge valve)
+        # Simulate combustion chamber pressure (affected by purge valve)
         if not self.purge_valve_state:
             # When valve is closed, pressure builds based on pipe pressure
-            target = self.last_pipe_pressure * 1.5  # Chamber pressure is higher
-            if self.last_chamber_pressure < target:
-                self.last_chamber_pressure = min(
+            target = self.last_pipe_pressure * 1.5  # Combustion chamber pressure is higher
+            if self.last_combustion_pressure < target:
+                self.last_combustion_pressure = min(
                     target,
-                    self.last_chamber_pressure + self.chamber_pressure_rate
+                    self.last_combustion_pressure + self.combustion_pressure_rate
                 )
         else:
-            # When purge valve is open, pressure drops rapidly
-            self.last_chamber_pressure = max(
+            # When purge valve is open, pressure drops gradually
+            self.last_combustion_pressure = max(
                 0,
-                self.last_chamber_pressure - self.chamber_pressure_rate * 3
+                self.last_combustion_pressure - self.combustion_pressure_rate * 2
             )
         
-        # Update chamber pressure min/max
-        self.chamber_pressure_min = min(self.chamber_pressure_min, self.last_chamber_pressure)
-        self.chamber_pressure_max = max(self.chamber_pressure_max, self.last_chamber_pressure)
+        # Update combustion chamber pressure min/max
+        self.chamber_pressure_min = min(self.chamber_pressure_min, self.last_combustion_pressure)
+        self.chamber_pressure_max = max(self.chamber_pressure_max, self.last_combustion_pressure)
         
         # Simulate realistic thrust curve
         if elapsed_time < 0.2:  # Build phase (0-0.2s)
@@ -244,12 +244,13 @@ class RocketMonitorApp:
         # Add tiny variations to thrust
         self.last_thrust += random.uniform(-0.05, 0.05)
         self.last_thrust = max(0, self.last_thrust)
-        
+
         # Update thrust min/max
         self.thrust_min = min(self.thrust_min, self.last_thrust)
         self.thrust_max = max(self.thrust_max, self.last_thrust)
-        
-        return self.last_pipe_pressure, self.last_chamber_pressure, self.last_thrust
+
+        # Return pipe pressure, combustion chamber pressure, and thrust
+        return self.last_pipe_pressure, self.last_combustion_pressure, self.last_thrust
 
     def update_plots(self):
         # Simulate new readings
@@ -268,7 +269,8 @@ class RocketMonitorApp:
         
         # Function to set up time axis
         def setup_time_axis(ax):
-            ax.set_xlim(max(0, elapsed_time - 5), max(5, elapsed_time))  # Show 5-second window
+            window_size = 2  # Show 2-second window for better curve visibility
+            ax.set_xlim(max(0, elapsed_time - window_size), max(window_size, elapsed_time))
             ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))  # Major ticks every 0.2 seconds
             ax.xaxis.set_minor_locator(plt.MultipleLocator(0.1))  # Minor ticks every 0.1 seconds
             ax.grid(True, which='major', linestyle='-', alpha=0.7)
@@ -282,13 +284,13 @@ class RocketMonitorApp:
         self.pipe_fig.tight_layout()
         self.pipe_canvas.draw()
         
-        # Update chamber pressure plot and stats
-        self.chamber_line.set_xdata(self.times)
-        self.chamber_line.set_ydata(self.chamber_pressure_data)
-        self.chamber_stats.set_text(f'Min: {self.chamber_pressure_min:.1f} PSI\nMax: {self.chamber_pressure_max:.1f} PSI\nCurrent: {self.last_chamber_pressure:.1f} PSI')
-        setup_time_axis(self.chamber_ax)
-        self.chamber_fig.tight_layout()
-        self.chamber_canvas.draw()
+        # Update combustion chamber pressure plot and stats
+        self.combustion_line.set_xdata(self.times)
+        self.combustion_line.set_ydata(self.chamber_pressure_data)
+        self.combustion_stats.set_text(f'Min: {self.chamber_pressure_min:.1f} PSI\nMax: {self.chamber_pressure_max:.1f} PSI\nCurrent: {self.last_combustion_pressure:.1f} PSI')
+        setup_time_axis(self.combustion_ax)
+        self.combustion_fig.tight_layout()
+        self.combustion_canvas.draw()
         
         # Update thrust plot and stats
         self.thrust_line.set_xdata(self.times)
@@ -299,7 +301,7 @@ class RocketMonitorApp:
         self.thrust_canvas.draw()
         
         # Schedule the next update
-        self.root.after(100, self.update_plots)  # Update every 100ms (10Hz)
+        self.root.after(200, self.update_plots)  # Update every 200ms (5Hz) for smoother curves
 
 if __name__ == "__main__":
     root = tk.Tk()
