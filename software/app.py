@@ -88,14 +88,14 @@ class RocketMonitorApp:
         )
         self.ball_valve_btn.pack(side=tk.LEFT, padx=10, expand=True)
         
-        # Purge Valve Toggle
-        # Purge valve affects combustion chamber pressure
+        # Emergency Purge Valve Toggle
+        # Purge valve causes rapid pressure drop in all systems
         self.purge_valve_state = False
         self.purge_valve_btn = ttk.Button(
             control_frame,
-            text="Purge Valve: CLOSED",
+            text="EMERGENCY PURGE: OFF",
             command=self.toggle_purge_valve,
-            width=20
+            width=30  # Increased width to prevent text cutoff
         )
         self.purge_valve_btn.pack(side=tk.LEFT, padx=10, expand=True)
         
@@ -189,11 +189,11 @@ class RocketMonitorApp:
         # Here you would add the actual servo control code
 
     def toggle_purge_valve(self):
-        """Toggle the purge valve (affects combustion chamber pressure)."""
+        """Toggle the emergency purge valve (causes rapid pressure drop in all systems)."""
         self.purge_valve_state = not self.purge_valve_state
-        state = "OPEN" if self.purge_valve_state else "CLOSED"
-        self.purge_valve_btn.configure(text=f"Purge Valve: {state}")
-        print(f"Purge Valve {state}")
+        state = "ON" if self.purge_valve_state else "OFF"
+        self.purge_valve_btn.configure(text=f"EMERGENCY PURGE: {state}")
+        print(f"Emergency Purge {state}")
         # Here you would add the actual servo control code
 
     def simulate_sensor_reading(self):
@@ -224,21 +224,19 @@ class RocketMonitorApp:
         self.pipe_pressure_min = min(self.pipe_pressure_min, self.last_pipe_pressure)
         self.pipe_pressure_max = max(self.pipe_pressure_max, self.last_pipe_pressure)
         
-        # Simulate combustion chamber pressure (affected by purge valve)
-        if not self.purge_valve_state:
-            # When valve is closed, pressure builds based on pipe pressure
-            target = self.last_pipe_pressure * 1.5  # Combustion chamber pressure is higher
-            if self.last_combustion_pressure < target:
-                self.last_combustion_pressure = min(
-                    target,
-                    self.last_combustion_pressure + self.combustion_pressure_rate
-                )
-        else:
-            # When purge valve is open, pressure drops gradually
-            self.last_combustion_pressure = max(
-                0,
-                self.last_combustion_pressure - self.combustion_pressure_rate * 2
-            )
+        # Combustion chamber pressure stays at a constant level
+        # Independent of pipe pressure, only affected by purge valve
+        if not hasattr(self, 'base_combustion_pressure'):
+            self.base_combustion_pressure = 240.0  # Starting baseline
+        
+        # If purge valve is open, it causes an emergency pressure drop in both systems
+        if self.purge_valve_state:
+            # Rapid pressure drop in both systems when purge is active
+            self.last_pipe_pressure = max(0, self.last_pipe_pressure - self.pipe_pressure_rate * 4)
+            self.base_combustion_pressure = max(0, self.base_combustion_pressure - self.pipe_pressure_rate * 4)
+        
+        # Set combustion chamber pressure to current base level
+        self.last_combustion_pressure = self.base_combustion_pressure
         
         # Update combustion chamber pressure min/max
         self.chamber_pressure_min = min(self.chamber_pressure_min, self.last_combustion_pressure)
