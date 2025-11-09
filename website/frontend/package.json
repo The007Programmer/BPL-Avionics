@@ -1,29 +1,27 @@
 {
-  "name": "temp-frontend",
+  "name": "bpl-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_VERSION=20.9.0 bunx --bun next dev",
-    "build": "NODE_VERSION=20.9.0 bunx --bun next build",
-    "start": "NODE_VERSION=20.9.0 bunx --bun next start",
-    "lint": "eslint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "next": "14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "10.4.21",
-    "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.1",
-    "postcss": "8.5.6",
-    "tailwindcss": "4.1.17",
-    "typescript": "^5"
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
   }
 }
