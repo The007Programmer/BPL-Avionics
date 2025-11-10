@@ -7,12 +7,12 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm">
+    <nav className="fixed w-full z-50 bg-[var(--background)] border-b-2 border-[var(--foreground)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gradient">
-              BPL
+            <Link href="/" className="text-2xl font-bold hover:text-[var(--accent)]">
+              BPL_
             </Link>
           </div>
           <div className="hidden md:block">
