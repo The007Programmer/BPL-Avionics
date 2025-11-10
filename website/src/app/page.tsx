@@ -7,15 +7,20 @@ export default function Home() {
       <Navbar />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="w-full min-h-[90vh] flex items-center justify-center relative px-4">
-          <div className="max-w-6xl w-full">
+        <section className="w-full min-h-[90vh] flex items-center justify-center relative px-4 overflow-hidden">
+          {/* Background glow effect */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[var(--accent)] opacity-[0.03] blur-[100px]" />
+          
+          <div className="max-w-6xl w-full relative">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
-                <img 
-                  src="/images/bpl.png" 
-                  alt="BPL Logo" 
-                  className="w-32 float"
-                />
+                <div className="logo-wrapper inline-block">
+                  <img 
+                    src="/images/bpl.png" 
+                    alt="BPL Logo" 
+                    className="w-32 float"
+                  />
+                </div>
                 <div className="slide-left">
                   <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
                     Blinn Propulsion Laboratory
@@ -25,16 +30,16 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="slide-left space-y-6" style={{ animationDelay: "0.2s" }}>
-                  <div className="h-px w-24 bg-[var(--accent)]" />
+                  <div className="accent-line w-24" />
                   <p className="text-lg max-w-md text-[var(--secondary)]">
                     A student research team partnered with TAMU Sounding Rocketry, 
                     developing next-generation propulsion technologies
                   </p>
                 </div>
               </div>
-              <div className="relative aspect-square section-dark overflow-hidden hover-scale">
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-                  <h3 className="text-2xl font-bold mb-4">Current Focus</h3>
+              <div className="relative aspect-square glass-card rounded-2xl overflow-hidden hover-scale">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-0 hover:opacity-100 transition-all duration-500 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent">
+                  <h3 className="text-2xl font-bold mb-4 text-gradient">Current Focus</h3>
                   <p className="text-center text-[var(--secondary)]">
                     Research and development of liquid-fuel rocket engine systems
                   </p>
@@ -47,47 +52,79 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Decorative elements */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface)] to-transparent" />
         </section>
 
         {/* Mission Section */}
-        <section id="mission" className="section-dark w-full py-32">
+        <section id="mission" className="section section-curve-top w-full py-32">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 slide-left">
-                <h2 className="text-4xl font-bold">Our Mission</h2>
-                <div className="space-y-6 text-[var(--secondary)]">
-                  <p className="text-xl">
+                <div>
+                  <h2 className="text-4xl font-bold mb-2">Our Mission</h2>
+                  <div className="accent-line w-16"></div>
+                </div>
+                <div className="space-y-6">
+                  <p className="text-xl text-gradient font-medium">
                     Advancing student research in liquid rocket propulsion while building 
                     the next generation of aerospace engineers.
                   </p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start space-x-3">
-                      <span className="text-[var(--accent)]">•</span>
-                      <span>Hands-on experience in propulsion system design and testing</span>
+                  <ul className="space-y-6 text-[var(--secondary)]">
+                    <li className="flex items-start space-x-4 group">
+                      <span className="text-[var(--accent)] text-lg opacity-50 group-hover:opacity-100 transition-opacity">01</span>
+                      <span className="group-hover:text-[var(--foreground)] transition-colors">
+                        Hands-on experience in propulsion system design and testing
+                      </span>
                     </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-[var(--accent)]">•</span>
-                      <span>Collaboration with TAMU aerospace engineering programs</span>
+                    <li className="flex items-start space-x-4 group">
+                      <span className="text-[var(--accent)] text-lg opacity-50 group-hover:opacity-100 transition-opacity">02</span>
+                      <span className="group-hover:text-[var(--foreground)] transition-colors">
+                        Collaboration with TAMU aerospace engineering programs
+                      </span>
                     </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-[var(--accent)]">•</span>
-                      <span>Development of innovative propulsion technologies</span>
+                    <li className="flex items-start space-x-4 group">
+                      <span className="text-[var(--accent)] text-lg opacity-50 group-hover:opacity-100 transition-opacity">03</span>
+                      <span className="group-hover:text-[var(--foreground)] transition-colors">
+                        Development of innovative propulsion technologies
+                      </span>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 slide-right">
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
-                  <p className="font-medium">Student-Led Innovation</p>
+                <div className="glass-card rounded-2xl p-6 flex items-center justify-center text-center group">
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center mx-auto group-hover:border-[var(--accent)] transition-colors">
+                      <span className="text-[var(--accent)]">01</span>
+                    </div>
+                    <p className="font-medium">Student-Led Innovation</p>
+                  </div>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
-                  <p className="font-medium">Hands-On Research</p>
+                <div className="glass-card rounded-2xl p-6 flex items-center justify-center text-center group">
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center mx-auto group-hover:border-[var(--accent)] transition-colors">
+                      <span className="text-[var(--accent)]">02</span>
+                    </div>
+                    <p className="font-medium">Hands-On Research</p>
+                  </div>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
-                  <p className="font-medium">Engineering Excellence</p>
+                <div className="glass-card rounded-2xl p-6 flex items-center justify-center text-center group">
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center mx-auto group-hover:border-[var(--accent)] transition-colors">
+                      <span className="text-[var(--accent)]">03</span>
+                    </div>
+                    <p className="font-medium">Engineering Excellence</p>
+                  </div>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
-                  <p className="font-medium">Industry Collaboration</p>
+                <div className="glass-card rounded-2xl p-6 flex items-center justify-center text-center group">
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center mx-auto group-hover:border-[var(--accent)] transition-colors">
+                      <span className="text-[var(--accent)]">04</span>
+                    </div>
+                    <p className="font-medium">Industry Collaboration</p>
+                  </div>
                 </div>
               </div>
             </div>

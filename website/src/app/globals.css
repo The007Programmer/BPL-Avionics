@@ -32,10 +32,13 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --accent: #ff3e00;
-  --secondary: #888888;
-  --surface: #111111;
-  --border: rgba(255,255,255,0.1);
+  --accent: #1874CC;
+  --accent-light: #2884DC;
+  --secondary: #a0a0a0;
+  --surface: #0a0a0a;
+  --surface-light: #111111;
+  --border: rgba(255,255,255,0.08);
+  --glow: rgba(24,116,204,0.15);
 }
 
 * {
@@ -169,16 +172,95 @@ section {
   opacity: 0.1;
 }
 
-/* Section styles */
+/* Modern section styles */
 .section {
   position: relative;
   padding: 6rem 0;
-  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--border) 15%, 
+    var(--border) 85%, 
+    transparent 100%
+  );
+}
+
+.section-curve-top {
+  position: relative;
+}
+
+.section-curve-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: var(--surface-light);
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
+  z-index: -1;
+}
+
+.glass-card {
+  background: linear-gradient(165deg, 
+    var(--surface-light) 0%, 
+    var(--surface) 100%
+  );
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 32px var(--glow);
+  border-color: var(--accent);
+}
+
+.glow-accent {
+  box-shadow: 0 0 30px var(--glow);
+}
+
+/* Accent line with gradient fade */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--accent) 50%, 
+    transparent 100%
+  );
+  opacity: 0.5;
 }
 
 /* Text gradient */
 .text-gradient {
-  background: linear-gradient(to right, var(--foreground), var(--accent));
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Logo background for contrast */
+.logo-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: var(--surface);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.8;
 }
