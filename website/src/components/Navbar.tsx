@@ -7,39 +7,39 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-[var(--background)] border-b-2 border-[var(--foreground)]">
+    <nav className="fixed w-full z-50 bg-[var(--background)]/80 backdrop-blur-sm border-b border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold hover:text-[var(--accent)]">
-              BPL_
+            <Link href="/" className="text-2xl font-bold group">
+              <span className="inline-block transition-transform group-hover:scale-110">BPL_</span>
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+            <div className="ml-10 flex items-baseline space-x-8">
               <Link 
-                href="/#team" 
+                href="/#mission" 
                 className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
               >
-                Our Team
+                Mission
               </Link>
               <Link 
-                href="/#projects" 
+                href="/#research" 
                 className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
               >
-                Projects
+                Research
               </Link>
               <Link 
-                href="/#sponsors" 
+                href="/#join" 
                 className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
               >
-                Sponsors
+                Join Us
               </Link>
               <Link 
-                href="/#contact" 
-                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
+                href="/#support" 
+                className="px-4 py-2 border border-[var(--border)] hover:bg-[var(--surface)] transition-all interactive"
               >
-                Contact
+                Support BPL
               </Link>
             </div>
           </div>

@@ -9,40 +9,141 @@ export default function Home() {
         {/* Hero Section */}
         <section className="w-full min-h-[90vh] flex items-center justify-center relative px-4">
           <div className="max-w-6xl w-full">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8 animate-fade-in">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="space-y-10">
                 <img 
                   src="/images/bpl.png" 
                   alt="BPL Logo" 
-                  className="w-32 animate-float"
+                  className="w-32 float"
                 />
-                <div>
-                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-4">
+                <div className="slide-left">
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
                     Blinn Propulsion Laboratory
                   </h1>
                   <p className="text-xl text-[var(--secondary)] max-w-xl">
-                    Student rocket team at Blinn College Engineering Academy, partnered with TAMU SRT
+                    Pushing the boundaries of liquid rocket propulsion at Blinn College Engineering Academy
                   </p>
                 </div>
-                <div className="flex flex-col space-y-4">
-                  <div className="h-0.5 w-24 bg-black" />
-                  <p className="text-lg max-w-md">
-                    First-year engineering students pushing the boundaries of liquid rocket propulsion through hands-on research and development
+                <div className="slide-left space-y-6" style={{ animationDelay: "0.2s" }}>
+                  <div className="h-px w-24 bg-[var(--accent)]" />
+                  <p className="text-lg max-w-md text-[var(--secondary)]">
+                    A student research team partnered with TAMU Sounding Rocketry, 
+                    developing next-generation propulsion technologies
                   </p>
                 </div>
               </div>
-              <div className="relative h-[500px] border border-black overflow-hidden group">
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-xl font-bold mb-4">Current Project</h3>
-                  <p className="text-center">
-                    Developing and testing liquid-fuel rocket engine systems
+              <div className="relative aspect-square section-dark overflow-hidden hover-scale">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                  <h3 className="text-2xl font-bold mb-4">Current Focus</h3>
+                  <p className="text-center text-[var(--secondary)]">
+                    Research and development of liquid-fuel rocket engine systems
                   </p>
                 </div>
                 <img 
                   src="/images/bpl.png"
                   alt="Engine Development" 
-                  className="absolute inset-0 w-full h-full object-contain p-8"
+                  className="absolute inset-0 w-full h-full object-contain p-12"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission Section */}
+        <section id="mission" className="section-dark w-full py-32">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 slide-left">
+                <h2 className="text-4xl font-bold">Our Mission</h2>
+                <div className="space-y-6 text-[var(--secondary)]">
+                  <p className="text-xl">
+                    Advancing student research in liquid rocket propulsion while building 
+                    the next generation of aerospace engineers.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">•</span>
+                      <span>Hands-on experience in propulsion system design and testing</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">•</span>
+                      <span>Collaboration with TAMU aerospace engineering programs</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">•</span>
+                      <span>Development of innovative propulsion technologies</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 slide-right">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
+                  <p className="font-medium">Student-Led Innovation</p>
+                </div>
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
+                  <p className="font-medium">Hands-On Research</p>
+                </div>
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
+                  <p className="font-medium">Engineering Excellence</p>
+                </div>
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale">
+                  <p className="font-medium">Industry Collaboration</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Research Section */}
+        <section id="research" className="w-full py-32">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-4xl font-bold mb-16 slide-in">Current Research</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="section-dark p-8 hover-scale slide-left">
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold">Propulsion Systems</h3>
+                  <ul className="space-y-4 text-[var(--secondary)]">
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">01</span>
+                      <span>Custom injector plate design and optimization</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">02</span>
+                      <span>Regenerative cooling system development</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">03</span>
+                      <span>Thrust chamber geometry analysis</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">04</span>
+                      <span>Performance characterization and testing</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="section-dark p-8 hover-scale slide-right">
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold">Testing Infrastructure</h3>
+                  <ul className="space-y-4 text-[var(--secondary)]">
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">01</span>
+                      <span>Data acquisition system development</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">02</span>
+                      <span>Automated test sequence implementation</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">03</span>
+                      <span>Real-time monitoring solutions</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <span className="text-[var(--accent)]">04</span>
+                      <span>Safety systems and protocols</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -110,63 +211,107 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="w-full py-32 bg-black">
+        {/* Join Section */}
+        <section id="join" className="section-dark w-full py-32">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div className="text-white space-y-8">
-                <h2 className="text-4xl font-bold slide-in">Join Our Team</h2>
-                <div className="space-y-6">
-                  <div className="slide-in" style={{ animationDelay: "0.1s" }}>
-                    <h3 className="text-xl font-medium mb-2">Who We Are</h3>
-                    <p className="text-gray-400">
-                      Blinn Propulsion Lab is a student rocket team at Blinn College Engineering Academy. 
-                      We're first-year engineering students passionate about advancing propulsion technology.
-                    </p>
-                  </div>
-                  <div className="slide-in" style={{ animationDelay: "0.2s" }}>
-                    <h3 className="text-xl font-medium mb-2">Our Partnership</h3>
-                    <p className="text-gray-400">
-                      Proud partners with Texas A&M Sounding Rocketry Team (TAMU SRT), 
-                      working together to push the boundaries of student rocketry.
-                    </p>
-                  </div>
-                  <div className="slide-in" style={{ animationDelay: "0.3s" }}>
-                    <h3 className="text-xl font-medium mb-2">Get Involved</h3>
-                    <p className="text-gray-400">
-                      Are you a student interested in joining? A potential sponsor? 
-                      We'd love to hear from you!
-                    </p>
+            <div className="mb-16 text-center">
+              <h2 className="text-5xl font-bold mb-6 slide-in">Join BPL</h2>
+              <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
+                Are you a first-year engineering student at Blinn with a passion for rocket science?
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 slide-left">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold">What We Look For</h3>
+                  <ul className="space-y-3 text-[var(--secondary)]">
+                    <li>• Passion for aerospace and propulsion</li>
+                    <li>• Strong problem-solving abilities</li>
+                    <li>• Team-oriented mindset</li>
+                    <li>• Dedication to learning</li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold">What You'll Do</h3>
+                  <ul className="space-y-3 text-[var(--secondary)]">
+                    <li>• Design rocket propulsion systems</li>
+                    <li>• Conduct hands-on research</li>
+                    <li>• Work with TAMU SRT</li>
+                    <li>• Build real engineering experience</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="slide-right">
+                <div className="section-dark p-8 hover-scale">
+                  <h3 className="text-2xl font-bold mb-6">Ready to Apply?</h3>
+                  <p className="text-[var(--secondary)] mb-8">
+                    Complete our interview form to start your journey with BPL.
+                  </p>
+                  <a 
+                    href="https://forms.gle/your-interview-form" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn w-full text-center inline-block"
+                  >
+                    Start Application →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Support Section */}
+        <section id="support" className="w-full py-32">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="mb-16 text-center">
+              <h2 className="text-5xl font-bold mb-6 slide-in">Support Our Mission</h2>
+              <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
+                Partner with us to advance student research in rocket propulsion
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-16">
+              <div className="space-y-8 slide-left">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold">Why Support BPL?</h3>
+                  <ul className="space-y-3 text-[var(--secondary)]">
+                    <li>• Foster next-gen engineering talent</li>
+                    <li>• Access to innovative research</li>
+                    <li>• Connection to TAMU engineering</li>
+                    <li>• Brand visibility in aerospace</li>
+                  </ul>
+                </div>
+                <div className="section-dark p-8">
+                  <h4 className="text-xl font-bold mb-4">Current Partners</h4>
+                  <div className="text-[var(--secondary)]">
+                    <p>Texas A&M Sounding Rocketry Team (TAMU SRT)</p>
+                    {/* Add other partners as they come */}
                   </div>
                 </div>
               </div>
-              <form className="space-y-6 text-white slide-in" style={{ animationDelay: "0.4s" }}>
-                <div>
+              <div className="slide-right">
+                <form className="section-dark p-8 space-y-6">
+                  <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+                  <input
+                    type="text"
+                    placeholder="Organization Name"
+                    className="w-full p-4 bg-[var(--surface)] border border-[var(--border)] focus:border-[var(--accent)] transition-colors outline-none"
+                  />
                   <input
                     type="email"
-                    placeholder="Your Email"
-                    className="w-full p-4 bg-white/5 border border-white/10 focus:border-white/30 
-                             transition-colors rounded-none outline-none text-white"
+                    placeholder="Email"
+                    className="w-full p-4 bg-[var(--surface)] border border-[var(--border)] focus:border-[var(--accent)] transition-colors outline-none"
                   />
-                </div>
-                <div>
                   <textarea
-                    placeholder="Your Message"
-                    rows={6}
-                    className="w-full p-4 bg-white/5 border border-white/10 focus:border-white/30 
-                             transition-colors rounded-none outline-none text-white"
+                    placeholder="Message"
+                    rows={4}
+                    className="w-full p-4 bg-[var(--surface)] border border-[var(--border)] focus:border-[var(--accent)] transition-colors outline-none"
                   />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full p-4 bg-white text-black hover:bg-white/90 transition-colors 
-                           font-medium hover-trigger"
-                >
-                  <span className="hover-target transition-transform inline-block">
+                  <button type="submit" className="btn w-full">
                     Send Message →
-                  </span>
-                </button>
-              </form>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
