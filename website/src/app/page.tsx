@@ -14,11 +14,11 @@ export default function Home() {
           <div className="max-w-6xl w-full relative">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
-                <div className="logo-wrapper inline-block">
+                <div className="logo-bubble">
                   <img 
                     src="/images/bpl.png" 
                     alt="BPL Logo" 
-                    className="w-32 float"
+                    className="w-32 float relative z-10"
                   />
                 </div>
                 <div className="slide-left">
@@ -37,24 +37,24 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="relative aspect-square glass-card rounded-2xl overflow-hidden hover-scale">
+              <div className="relative aspect-square glass-card rounded-2xl overflow-hidden hover-glow">
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-0 hover:opacity-100 transition-all duration-500 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent">
                   <h3 className="text-2xl font-bold mb-4 text-gradient">Current Focus</h3>
                   <p className="text-center text-[var(--secondary)]">
                     Research and development of liquid-fuel rocket engine systems
                   </p>
                 </div>
-                <img 
-                  src="/images/bpl.png"
-                  alt="Engine Development" 
-                  className="absolute inset-0 w-full h-full object-contain p-12"
-                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-3/4 aspect-video glass-card rounded-lg p-6 flex items-center justify-center">
+                    <p className="text-[var(--secondary)] text-center">Engine CAD Visualization</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface)] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 section-transition" />
         </section>
 
         {/* Mission Section */}
