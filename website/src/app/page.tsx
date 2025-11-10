@@ -10,25 +10,39 @@ export default function Home() {
         <section className="w-full min-h-[90vh] flex items-center justify-center relative px-4">
           <div className="max-w-6xl w-full">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="space-y-8 animate-fade-in">
                 <img 
-                  src="/images/bpl-logo.svg" 
+                  src="/images/bpl.png" 
                   alt="BPL Logo" 
-                  className="w-32 mb-8"
+                  className="w-32 animate-float"
                 />
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
-                  Building the next generation of propulsion
-                </h1>
-                <div className="h-0.5 w-24 bg-black my-8" />
-                <p className="text-xl text-[var(--secondary)] max-w-md">
-                  Small team. Big ambitions. Developing innovative liquid rocket engine solutions.
-                </p>
-              </div>
-              <div className="relative h-[500px] border border-black">
-                {/* Add engine CAD or testing image here */}
-                <div className="absolute inset-0 flex items-center justify-center text-sm">
-                  [Engine CAD Visualization]
+                <div>
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-4">
+                    Blinn Propulsion Laboratory
+                  </h1>
+                  <p className="text-xl text-[var(--secondary)] max-w-xl">
+                    Student rocket team at Blinn College Engineering Academy, partnered with TAMU SRT
+                  </p>
                 </div>
+                <div className="flex flex-col space-y-4">
+                  <div className="h-0.5 w-24 bg-black" />
+                  <p className="text-lg max-w-md">
+                    First-year engineering students pushing the boundaries of liquid rocket propulsion through hands-on research and development
+                  </p>
+                </div>
+              </div>
+              <div className="relative h-[500px] border border-black overflow-hidden group">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="text-xl font-bold mb-4">Current Project</h3>
+                  <p className="text-center">
+                    Developing and testing liquid-fuel rocket engine systems
+                  </p>
+                </div>
+                <img 
+                  src="/images/bpl.png"
+                  alt="Engine Development" 
+                  className="absolute inset-0 w-full h-full object-contain p-8"
+                />
               </div>
             </div>
           </div>

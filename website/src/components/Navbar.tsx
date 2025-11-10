@@ -16,17 +16,29 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/#about" className="text-gray-300 hover:text-white px-3 py-2">
-                About
+            <div className="ml-10 flex items-baseline space-x-6">
+              <Link 
+                href="/#team" 
+                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
+              >
+                Our Team
               </Link>
-              <Link href="/#technology" className="text-gray-300 hover:text-white px-3 py-2">
-                Technology
+              <Link 
+                href="/#projects" 
+                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
+              >
+                Projects
               </Link>
-              <Link href="/#products" className="text-gray-300 hover:text-white px-3 py-2">
-                Products
+              <Link 
+                href="/#sponsors" 
+                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
+              >
+                Sponsors
               </Link>
-              <Link href="/#contact" className="text-gray-300 hover:text-white px-3 py-2">
+              <Link 
+                href="/#contact" 
+                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors px-3 py-2 interactive"
+              >
                 Contact
               </Link>
             </div>
