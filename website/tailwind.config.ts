@@ -9,11 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        accent: '#1874CC',
+        'accent-light': '#2884DC',
+        secondary: '#888888',
+        surface: '#111111',
       },
-      backgroundImage: {
-        'gradient-primary': 'linear-gradient(45deg, #00ff87 0%, #60efff 100%)',
+      fontFamily: {
+        satoshi: ['"Satoshi"', 'sans-serif'],
+      },
+      fontSize: {
+        '2xl': '1.5rem',
+      },
+      spacing: {
+        '96': '24rem',
+      },
+      zIndex: {
+        '9999': '9999',
       },
     },
   },

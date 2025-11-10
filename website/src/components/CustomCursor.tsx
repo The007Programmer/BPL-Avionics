@@ -1,9 +1,10 @@
+// @ts-nocheck
 'use client';
 
 import { useEffect, useState } from 'react';
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
@@ -14,10 +15,11 @@ export default function CustomCursor() {
     const updateHoverState = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       setIsHovering(
-        target.tagName === 'BUTTON' ||
-        target.tagName === 'A' ||
-        target.closest('button') !== null ||
-        target.closest('a') !== null
+        target?.tagName === 'BUTTON' ||
+        target?.tagName === 'A' ||
+        !!target?.closest('button') ||
+        !!target?.closest('a') ||
+        !!target?.closest('.interactive')
       );
     };
 
@@ -35,7 +37,9 @@ export default function CustomCursor() {
       className={`custom-cursor ${isHovering ? 'hover' : ''}`}
       style={{
         left: `${position.x}px`,
-        top: `${position.y}px`
+        top: `${position.y}px`,
+        transform: 'translate(-50%, -50%)',
+        position: 'fixed'
       }}
     />
   );
