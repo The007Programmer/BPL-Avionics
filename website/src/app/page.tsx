@@ -97,43 +97,60 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="w-full py-20 section-gradient">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold mb-8 text-center">Contact Us</h2>
-            <div className="max-w-2xl mx-auto">
-              <form className="space-y-6">
+        <section id="contact" className="w-full py-32 bg-black">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div className="text-white space-y-8">
+                <h2 className="text-4xl font-bold slide-in">Join Our Team</h2>
+                <div className="space-y-6">
+                  <div className="slide-in" style={{ animationDelay: "0.1s" }}>
+                    <h3 className="text-xl font-medium mb-2">Who We Are</h3>
+                    <p className="text-gray-400">
+                      Blinn Propulsion Lab is a student rocket team at Blinn College Engineering Academy. 
+                      We're first-year engineering students passionate about advancing propulsion technology.
+                    </p>
+                  </div>
+                  <div className="slide-in" style={{ animationDelay: "0.2s" }}>
+                    <h3 className="text-xl font-medium mb-2">Our Partnership</h3>
+                    <p className="text-gray-400">
+                      Proud partners with Texas A&M Sounding Rocketry Team (TAMU SRT), 
+                      working together to push the boundaries of student rocketry.
+                    </p>
+                  </div>
+                  <div className="slide-in" style={{ animationDelay: "0.3s" }}>
+                    <h3 className="text-xl font-medium mb-2">Get Involved</h3>
+                    <p className="text-gray-400">
+                      Are you a student interested in joining? A potential sponsor? 
+                      We'd love to hear from you!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <form className="space-y-6 text-white slide-in" style={{ animationDelay: "0.4s" }}>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300">
-                    Email
-                  </label>
                   <input
                     type="email"
-                    id="email"
-                    className="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 
-                             shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-2 
-                             focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your Email"
+                    className="w-full p-4 bg-white/5 border border-white/10 focus:border-white/30 
+                             transition-colors rounded-none outline-none text-white"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300">
-                    Message
-                  </label>
                   <textarea
-                    id="message"
-                    rows={4}
-                    className="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 
-                             shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-2 
-                             focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your Message"
+                    rows={6}
+                    className="w-full p-4 bg-white/5 border border-white/10 focus:border-white/30 
+                             transition-colors rounded-none outline-none text-white"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent 
-                           rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 
-                           hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                           focus:ring-blue-500"
+                  className="w-full p-4 bg-white text-black hover:bg-white/90 transition-colors 
+                           font-medium hover-trigger"
                 >
-                  Send Message
+                  <span className="hover-target transition-transform inline-block">
+                    Send Message →
+                  </span>
                 </button>
               </form>
             </div>
