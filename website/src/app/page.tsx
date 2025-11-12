@@ -147,7 +147,7 @@ export default function Home() {
           </div>
         </section>
   {/* Vision Section */}
-  <section id="vision" className="w-full py-32 px-4 border-t border-b border-[var(--accent)]/20 section-accent">
+  <section id="vision" className="w-full py-32 px-4 section-dark section-accent border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
@@ -185,8 +185,8 @@ export default function Home() {
         {/* Current Projects section removed per request */}
 
   {/* Join Section */}
-          {/* Join Section */}
-        <section id="join" className="section-dark w-full py-32 section-accent border-t border-[var(--accent)]/20">
+    {/* Join Section */}
+    <section id="join" className="w-full py-32 section-accent bg-[var(--background)]">
           <div className="max-w-6xl mx-auto px-4">
             <div className="mb-16 text-center">
               <h2 className="text-5xl font-bold mb-6 slide-in">Join BPL</h2>
@@ -239,8 +239,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Support Section */}
-        <section id="support" className="w-full py-32 section-accent border-t border-[var(--accent)]/20">
+  {/* Support Section */}
+  <section id="support" className="w-full py-32 section-accent section-dark border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <div className="mb-16 text-center">
               <h2 className="text-5xl font-bold mb-6 slide-in">Support Our Mission</h2>
@@ -293,6 +293,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer className="w-full py-8 border-t border-[var(--border)] text-center text-sm text-[var(--secondary)]">
+        © 2025 Blinn Propulsion Laboratory
+      </footer>
     </div>
   );
 }
