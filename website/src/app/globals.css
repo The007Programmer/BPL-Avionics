@@ -178,13 +178,8 @@ section {
 
 /* Logo and decorative elements */
 .logo-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: -22px;
-  background: radial-gradient(circle at center, #ffffff 0%, #ffffff 72%, transparent 73%);
-  border-radius: 50%;
-  z-index: -1;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  /* Remove the large white circular background so the logo appears without a white circle */
+  display: none;
 }
 
 .logo-wrapper::after {
