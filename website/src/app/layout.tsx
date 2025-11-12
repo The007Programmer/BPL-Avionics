@@ -13,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "BPL - Advanced Propulsion Systems",
   description: "Pioneering the future of liquid rocket propulsion systems",
+  icons: {
+    icon: '/images/bpl.png',
+  },
 };
 
 export default function RootLayout({
