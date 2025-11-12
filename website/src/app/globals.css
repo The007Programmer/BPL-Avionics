@@ -104,9 +104,22 @@ section {
   .section-dark {
     background: var(--surface);
     border: 1px solid var(--border);
+    position: relative;
   }
 
-  /* Modern button styles */
+  /* Subtle blue accent glow inside section-dark boxes */
+  .section-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0.3;
+  }
+
+  /* Modern button styles with blue hover effect */
   .btn {
     padding: 0.75rem 1.5rem;
     border: 1px solid var(--border);
@@ -131,6 +144,10 @@ section {
     opacity: 0.1;
   }
 
+  .btn:hover {
+    border-color: var(--accent);
+  }
+
   /* Section styles */
   .section {
     position: relative;
@@ -144,6 +161,15 @@ section {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Blue accent highlight for list items and text */
+  .accent-text {
+    color: var(--accent);
+  }
+
+  .accent-border {
+    border-color: var(--accent);
   }
 }
 

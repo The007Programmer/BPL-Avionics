@@ -8,7 +8,7 @@ export default function Home() {
       <Navbar />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="w-full min-h-[90vh] flex items-center justify-center relative px-4">
+        <section className="w-full min-h-screen flex items-center justify-center relative px-4">
           <div className="max-w-6xl w-full">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
@@ -48,7 +48,7 @@ export default function Home() {
         </section>
 
         {/* Mission Section */}
-        <section id="mission" className="section-dark w-full py-32">
+        <section id="mission" className="section-dark w-full py-32 border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 slide-left">
@@ -93,7 +93,7 @@ export default function Home() {
         </section>
 
   {/* Research Section */}
-  <section id="research" className="w-full py-32 section-accent">
+        <section id="research" className="w-full py-32 section-accent border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-16 slide-in">Current Research</h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -147,7 +147,7 @@ export default function Home() {
           </div>
         </section>
   {/* Vision Section */}
-  <section id="vision" className="w-full py-32 px-4 border-t border-b border-black section-accent">
+  <section id="vision" className="w-full py-32 px-4 border-t border-b border-[var(--accent)]/20 section-accent">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
@@ -185,11 +185,15 @@ export default function Home() {
         {/* Current Projects section removed per request */}
 
   {/* Join Section */}
-  <section id="join" className="section-dark w-full py-32 section-accent">
+          {/* Join Section */}
+        <section id="join" className="section-dark w-full py-32 section-accent border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <div className="mb-16 text-center">
-              <div className="inline-block mb-4 px-4 py-2 bg-[var(--accent)]/10 rounded-full text-[var(--accent)] text-sm font-medium">
-                Applications Currently Closed
+              <div className="inline-block mb-6 px-6 py-3 bg-[var(--accent)]/15 rounded-xl text-[var(--accent)] font-medium border border-[var(--accent)]/30">
+                <p className="text-2xl mb-2">⚠️ Applications Currently Closed</p>
+                <p className="text-sm text-[var(--secondary)]">
+                  Please reach out to <a href="mailto:blinnpropulsion@gmail.com" className="text-[var(--accent)] hover:underline">blinnpropulsion@gmail.com</a> or check back next semester
+                </p>
               </div>
               <h2 className="text-5xl font-bold mb-6 slide-in">Join BPL</h2>
               <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
@@ -238,8 +242,8 @@ export default function Home() {
           </div>
         </section>
 
-  {/* Support Section */}
-  <section id="support" className="w-full py-32 section-accent">
+        {/* Support Section */}
+        <section id="support" className="w-full py-32 section-accent border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <div className="mb-16 text-center">
               <h2 className="text-5xl font-bold mb-6 slide-in">Support Our Mission</h2>

@@ -12,8 +12,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="inline-block group" aria-label="Blinn Propulsion Laboratory">
-              <img src="/images/bpl.png" alt="BPL Logo" className="w-12 h-12 object-contain" />
+            <Link href="/" className="inline-flex items-center gap-2 group" aria-label="Blinn Propulsion Laboratory">
+              <span className="text-lg font-bold tracking-wider relative">
+                BPL
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent)] group-hover:w-full transition-all duration-300" />
+              </span>
             </Link>
           </div>
           <div className="hidden md:block">
