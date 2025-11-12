@@ -28,6 +28,26 @@
   50% { transform: scale(1.05); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes underlineSlide {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blueGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(24,116,204,0); }
+  50% { box-shadow: 0 0 12px 2px rgba(24,116,204,0.15); }
+}
+
+@keyframes textHighlightSlide {
+  from { background-position: -100% 0; }
+  to { background-position: 100% 0; }
+}
+
 :root {
   --background: #000000;
   --foreground: #ffffff;
@@ -190,6 +210,102 @@ section {
     background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
     border-radius: 4px;
     pointer-events: none;
+  }
+
+  /* Blue accent underline for important text */
+  .accent-underline {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+
+  .accent-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+    animation: underlineSlide 0.8s ease-out forwards;
+  }
+
+  /* Staggered list item animations */
+  .stagger-item {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+
+  /* Blue accent boxes with glow on hover */
+  .accent-box {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .accent-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--accent);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .accent-box:hover::before {
+    opacity: 1;
+    animation: blueGlow 2s ease-in-out infinite;
+  }
+
+  /* Sliding text highlight effect */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--foreground) 0%,
+      var(--accent) 50%,
+      var(--foreground) 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textHighlightSlide 3s ease infinite;
+  }
+
+  /* Accent divider line */
+  .accent-divider {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      transparent
+    );
+  }
+
+  /* Section heading underline accent */
+  .section-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    border-radius: 2px;
+    animation: underlineSlide 0.6s ease-out forwards 0.3s;
   }
 }
 

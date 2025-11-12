@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "BPL - Advanced Propulsion Systems",
-  description: "Pioneering the future of liquid rocket propulsion systems",
+  description: "Pioneering the future of hybrid rocket propulsion systems",
   icons: {
     icon: '/images/bpl.png',
   },
@@ -23,7 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (  
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         <CustomCursor />

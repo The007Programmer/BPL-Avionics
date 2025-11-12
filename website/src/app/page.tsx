@@ -35,7 +35,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="relative aspect-square section-dark overflow-hidden hover-scale flex items-center justify-center rounded-3xl ml-4">
+              <div className="relative aspect-square section-dark overflow-hidden hover-scale flex items-center justify-center rounded-3xl -ml-2.5">
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-100 transition-opacity duration-500 pointer-events-none">
                   <h3 className="text-2xl font-bold mb-4">Current Focus</h3>
                   <p className="text-center text-[var(--secondary)]">
@@ -59,15 +59,15 @@ export default function Home() {
                     the next generation of aerospace engineers.
                   </p>
                   <ul className="space-y-4">
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">•</span>
                       <span>Apply system engineering principles to real-world challenges</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">•</span>
                       <span>Hands-on experience in propulsion system design and testing</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">•</span>
                       <span>Development of innovative propulsion technologies</span>
                     </li>
@@ -75,16 +75,16 @@ export default function Home() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 slide-right">
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl accent-box">
                   <p className="font-medium">Student-Led Innovation</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl accent-box">
                   <p className="font-medium">Hands-On Research</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl accent-box">
                   <p className="font-medium">Engineering Excellence</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center text-center hover-scale rounded-2xl accent-box">
                   <p className="font-medium">System Engineering</p>
                 </div>
               </div>
@@ -97,46 +97,46 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-16 slide-in">Current Research</h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="section-dark p-8 hover-scale slide-left rounded-2xl">
+              <div className="section-dark p-8 hover-scale slide-left rounded-2xl accent-box">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold">Propulsion Systems</h3>
                   <ul className="space-y-4 text-[var(--secondary)]">
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">01</span>
                       <span>Casing and fluid systems design</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">02</span>
                       <span>Materials research for heat resistance</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">03</span>
                       <span>Combustion chamber geometry analysis</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">04</span>
                       <span>Performance characterization and testing</span>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div className="section-dark p-8 hover-scale slide-right rounded-2xl">
+              <div className="section-dark p-8 hover-scale slide-right rounded-2xl accent-box">
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold">Testing Infrastructure</h3>
                   <ul className="space-y-4 text-[var(--secondary)]">
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">01</span>
                       <span>Utilizing telemetry systems</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">02</span>
                       <span>Real-time sensor graphing</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">03</span>
                       <span>Data acquisition and analysis</span>
                     </li>
-                    <li className="flex items-start space-x-3">
+                    <li className="flex items-start space-x-3 stagger-item">
                       <span className="text-[var(--accent)]">04</span>
                       <span>Safety systems and protocols</span>
                     </li>
@@ -153,28 +153,28 @@ export default function Home() {
               <div>
                 <h2 className="text-4xl font-bold mb-6">Our <span className="highlight">Vision</span></h2>
                 <div className="space-y-6 text-lg">
-                  <p>
-                    We're developing innovative hybrid propulsion solutions for the next generation of space technology.
+                  <p className="slide-left">
+                    We're developing <span className="accent-underline">innovative hybrid propulsion</span> solutions for the next generation of space technology.
                   </p>
-                  <p>
-                    Our focus: innovative design, rapid iteration, and practical testing methodologies.
+                  <p className="slide-left" style={{ animationDelay: "0.1s" }}>
+                    Our focus: <span className="accent-underline">innovative design</span>, rapid iteration, and practical testing methodologies.
                   </p>
-                  <p className="text-[var(--secondary)]">
+                  <p className="text-[var(--secondary)] slide-left" style={{ animationDelay: "0.2s" }}>
                     Currently seeking development partners and sponsors to accelerate our research.
                   </p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl accent-box">
                   <p className="font-medium">Design Innovation</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl accent-box">
                   <p className="font-medium">Rapid Prototyping</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl accent-box">
                   <p className="font-medium">Test Infrastructure</p>
                 </div>
-                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
+                <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl accent-box">
                   <p className="font-medium">Data-Driven Dev</p>
                 </div>
               </div>
@@ -199,19 +199,19 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold">What We Look For</h3>
                   <ul className="space-y-3 text-[var(--secondary)]">
-                    <li>• Passion and persistence for propulsion</li>
-                    <li>• Strong problem-solving abilities</li>
-                    <li>• Team-oriented mindset</li>
-                    <li>• Dedication to learning</li>
+                    <li className="stagger-item">• Passion and persistence for propulsion</li>
+                    <li className="stagger-item">• Strong problem-solving abilities</li>
+                    <li className="stagger-item">• Team-oriented mindset</li>
+                    <li className="stagger-item">• Dedication to learning</li>
                   </ul>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold">What You'll Do</h3>
                   <ul className="space-y-3 text-[var(--secondary)]">
-                    <li>• Design hybrid propulsion systems</li>
-                    <li>• Conduct hands-on research</li>
-                    <li>• Work with professionals in the field</li>
-                    <li>• Build real engineering experience</li>
+                    <li className="stagger-item">• Design hybrid propulsion systems</li>
+                    <li className="stagger-item">• Conduct hands-on research</li>
+                    <li className="stagger-item">• Work with professionals in the field</li>
+                    <li className="stagger-item">• Build real engineering experience</li>
                   </ul>
                 </div>
               </div>
@@ -222,7 +222,7 @@ export default function Home() {
                     Please reach out to <a href="mailto:blinnpropulsion@gmail.com" className="text-[var(--accent)] hover:underline">blinnpropulsion@gmail.com</a> or check back next semester
                   </p>
                 </div>
-                <div className="section-dark p-8 hover-scale rounded-2xl">
+                <div className="section-dark p-8 hover-scale rounded-2xl accent-box">
                   <h3 className="text-2xl font-bold mb-6">Contact BPL</h3>
                   <p className="text-[var(--secondary)] mb-8">
                     Have questions? Reach out to learn more about joining BPL.
@@ -253,13 +253,13 @@ export default function Home() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold">Why Support BPL?</h3>
                   <ul className="space-y-3 text-[var(--secondary)]">
-                    <li>• Foster next-gen engineering talent</li>
-                    <li>• Access to innovative research</li>
-                    <li>• Connection to Blinn College students</li>
-                    <li>• Brand visibility in aerospace</li>
+                    <li className="stagger-item">• Foster next-gen engineering talent</li>
+                    <li className="stagger-item">• Access to innovative research</li>
+                    <li className="stagger-item">• Connection to Blinn College students</li>
+                    <li className="stagger-item">• Brand visibility in aerospace</li>
                   </ul>
                 </div>
-                <div className="section-dark p-8 rounded-2xl">
+                <div className="section-dark p-8 rounded-2xl accent-box">
                   <h4 className="text-xl font-bold mb-4">Current Partners</h4>
                   <div className="text-[var(--secondary)]">
                     <p>Currently seeking partnerships and sponsors</p>
@@ -267,7 +267,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="slide-right">
-                <form className="section-dark p-8 space-y-6 rounded-2xl">
+                <form className="section-dark p-8 space-y-6 rounded-2xl accent-box">
                   <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
                   <input
                     type="text"
