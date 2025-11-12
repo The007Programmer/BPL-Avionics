@@ -215,19 +215,17 @@ section {
 }
 
 .logo-bubble::after {
-  content: '';
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  position: absolute;
-  z-index: -1;
-  background: transparent;
-  box-shadow: 0 0 0 6px rgba(24,116,204,0.95) inset;
-  filter: drop-shadow(0 10px 30px rgba(24,116,204,0.08));
+  /* Remove the blue decorative ring behind the logo as requested */
+  display: none;
 }
 
 /* animate the hero bubble subtly to restore motion */
 .logo-bubble {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Animate the visible logo image so it idly moves up/down */
+.logo-wrapper {
   animation: float 6s ease-in-out infinite;
 }
 
