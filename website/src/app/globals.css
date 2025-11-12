@@ -145,6 +145,13 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Ensure logo pseudo-elements are positioned relative to their wrapper
+     so the white/blue decorative rings don't span the entire viewport. */
+  .logo-wrapper {
+    position: relative;
+    display: inline-block;
+  }
 }
 
 @layer utilities {
