@@ -8,12 +8,12 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-[var(--background)]/80 backdrop-blur-sm border-b border-[var(--border)]">
+  <nav className="site-nav fixed w-full z-50 bg-[var(--background)]/80 backdrop-blur-sm border-b border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <Link href="/" className="inline-block group" aria-label="Blinn Propulsion Laboratory">
-              <img src="/images/bpl.png" alt="BPL Logo" className="w-10 h-10 object-contain" />
+              <img src="/images/bpl.png" alt="BPL Logo" className="w-12 h-12 object-contain" />
             </Link>
           </div>
           <div className="hidden md:block">
@@ -38,7 +38,7 @@ export default function Navbar() {
               </Link>
               <Link 
                 href="/#support" 
-                className="px-4 py-2 border border-[var(--border)] hover:bg-[var(--surface)] transition-all interactive"
+                className="px-4 py-2 rounded-full border border-[var(--border)] bg-transparent hover:bg-[var(--surface)] transition-all interactive"
               >
                 Support BPL
               </Link>

@@ -225,3 +225,45 @@ section {
   box-shadow: 0 0 0 6px rgba(24,116,204,0.95) inset;
   filter: drop-shadow(0 10px 30px rgba(24,116,204,0.08));
 }
+
+/* animate the hero bubble subtly to restore motion */
+.logo-bubble {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* curved, subtle bottom accent for the navbar */
+.site-nav {
+  position: relative;
+}
+.site-nav::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 70%;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(24,116,204,0.06), transparent 60%);
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+  pointer-events: none;
+}
+
+/* accent glow for lower page sections */
+.section-accent {
+  position: relative;
+}
+.section-accent::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(24,116,204,0.12), transparent 40%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
