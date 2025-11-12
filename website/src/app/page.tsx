@@ -8,7 +8,7 @@ export default function Home() {
       <Navbar />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="w-full min-h-screen flex items-center justify-center relative px-4">
+        <section className="w-full min-h-screen flex items-center justify-center relative px-4 -mt-20">
           <div className="max-w-6xl w-full">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
@@ -35,7 +35,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="relative aspect-square section-dark overflow-hidden hover-scale flex items-center justify-center">
+              <div className="relative aspect-square section-dark overflow-hidden hover-scale flex items-center justify-center rounded-3xl ml-4">
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-100 transition-opacity duration-500 pointer-events-none">
                   <h3 className="text-2xl font-bold mb-4">Current Focus</h3>
                   <p className="text-center text-[var(--secondary)]">
@@ -189,18 +189,9 @@ export default function Home() {
         <section id="join" className="section-dark w-full py-32 section-accent border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
             <div className="mb-16 text-center">
-              <div className="inline-block mb-6 px-6 py-3 bg-[var(--accent)]/15 rounded-xl text-[var(--accent)] font-medium border border-[var(--accent)]/30">
-                <p className="text-2xl mb-2">⚠️ Applications Currently Closed</p>
-                <p className="text-sm text-[var(--secondary)]">
-                  Please reach out to <a href="mailto:blinnpropulsion@gmail.com" className="text-[var(--accent)] hover:underline">blinnpropulsion@gmail.com</a> or check back next semester
-                </p>
-              </div>
               <h2 className="text-5xl font-bold mb-6 slide-in">Join BPL</h2>
               <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
                 Are you a Blinn College student with a passion for rocket science?
-              </p>
-              <p className="text-[var(--secondary)] text-sm max-w-2xl mx-auto mt-4">
-                Check back next semester for applications!
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -224,7 +215,13 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-              <div className="slide-right">
+              <div className="slide-right space-y-6">
+                <div className="inline-block w-full px-6 py-3 bg-[var(--accent)]/15 rounded-xl text-[var(--accent)] font-medium border border-[var(--accent)]/30">
+                  <p className="text-lg mb-2">⚠️ Applications Currently Closed</p>
+                  <p className="text-sm text-[var(--secondary)]">
+                    Please reach out to <a href="mailto:blinnpropulsion@gmail.com" className="text-[var(--accent)] hover:underline">blinnpropulsion@gmail.com</a> or check back next semester
+                  </p>
+                </div>
                 <div className="section-dark p-8 hover-scale rounded-2xl">
                   <h3 className="text-2xl font-bold mb-6">Contact BPL</h3>
                   <p className="text-[var(--secondary)] mb-8">
