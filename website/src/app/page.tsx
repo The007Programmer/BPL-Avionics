@@ -36,7 +36,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative aspect-square section-dark overflow-hidden hover-scale flex items-center justify-center">
-                <div className="logo-bubble" aria-hidden="true" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 opacity-100 transition-opacity duration-500 pointer-events-none">
                   <h3 className="text-2xl font-bold mb-4">Current Focus</h3>
                   <p className="text-center text-[var(--secondary)]">

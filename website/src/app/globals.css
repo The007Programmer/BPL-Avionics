@@ -145,13 +145,6 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  /* Ensure logo pseudo-elements are positioned relative to their wrapper
-     so the white/blue decorative rings don't span the entire viewport. */
-  .logo-wrapper {
-    position: relative;
-    display: inline-block;
-  }
 }
 
 @layer utilities {
@@ -177,55 +170,9 @@ section {
 }
 
 /* Logo and decorative elements */
-.logo-wrapper::before {
-  /* Remove the large white circular background so the logo appears without a white circle */
-  display: none;
-}
-
-.logo-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  z-index: -2;
-  pointer-events: none;
-  background: conic-gradient(from 0deg, rgba(24,116,204,1), rgba(24,116,204,1));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), black calc(100% - 5px));
-  opacity: 0.95;
-}
-
-/* Logo bubble for hero section */
-.logo-bubble {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.logo-bubble::before {
-  content: '';
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.45);
-  z-index: 0;
-}
-
-.logo-bubble::after {
-  /* Remove the blue decorative ring behind the logo as requested */
-  display: none;
-}
-
-/* animate the hero bubble subtly to restore motion */
-.logo-bubble {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Animate the visible logo image so it idly moves up/down */
 .logo-wrapper {
+  position: relative;
+  display: inline-block;
   animation: float 6s ease-in-out infinite;
 }
 
