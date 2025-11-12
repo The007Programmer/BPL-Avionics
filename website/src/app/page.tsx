@@ -151,7 +151,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl font-bold mb-6"><span className="accent-text">Our Vision</span></h2>
+                <h2 className="text-4xl font-bold mb-6">Our <span className="highlight">Vision</span></h2>
                 <div className="space-y-6 text-lg">
                   <p>
                     We're developing innovative hybrid propulsion solutions for the next generation of space technology.
@@ -166,16 +166,16 @@ export default function Home() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
-                  <p className="font-medium accent-text">Design Innovation</p>
+                  <p className="font-medium">Design Innovation</p>
                 </div>
                 <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
-                  <p className="font-medium accent-text">Rapid Prototyping</p>
+                  <p className="font-medium">Rapid Prototyping</p>
                 </div>
                 <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
-                  <p className="font-medium accent-text">Test Infrastructure</p>
+                  <p className="font-medium">Test Infrastructure</p>
                 </div>
                 <div className="aspect-square section-dark p-6 flex items-center justify-center rounded-2xl">
-                  <p className="font-medium accent-text">Data-Driven Dev</p>
+                  <p className="font-medium">Data-Driven Dev</p>
                 </div>
               </div>
             </div>
@@ -188,8 +188,8 @@ export default function Home() {
     {/* Join Section */}
     <section id="join" className="w-full py-32 section-accent bg-[var(--background)]">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="mb-16 text-center">
-              <h2 className="text-5xl font-bold mb-6 slide-in"><span className="accent-text">Join BPL</span></h2>
+              <div className="mb-16 text-center">
+              <h2 className="text-5xl font-bold mb-6 slide-in"><span className="highlight">Join</span> BPL</h2>
               <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
                 Are you a Blinn College student with a passion for rocket science?
               </p>
@@ -242,8 +242,8 @@ export default function Home() {
   {/* Support Section */}
   <section id="support" className="w-full py-32 section-accent section-dark border-t border-[var(--accent)]/20">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="mb-16 text-center">
-              <h2 className="text-5xl font-bold mb-6 slide-in"><span className="accent-text">Support Our Mission</span></h2>
+              <div className="mb-16 text-center">
+              <h2 className="text-5xl font-bold mb-6 slide-in"><span className="highlight">Support</span> Our Mission</h2>
               <p className="text-[var(--secondary)] text-xl max-w-2xl mx-auto slide-in">
                 Partner with us to advance student research in hybrid rocket propulsion
               </p>

@@ -171,6 +171,26 @@ section {
   .accent-border {
     border-color: var(--accent);
   }
+
+  /* subtle header highlight (not blue) - used to emphasize a single word */
+  .highlight {
+    display: inline-block;
+    font-weight: 700;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 40%;
+    bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+    border-radius: 4px;
+    pointer-events: none;
+  }
 }
 
 @layer utilities {
